@@ -1,0 +1,5 @@
+Realm
+RxSwift
+TableView
+ViewCode
+Combine - talvez para fazer http requests
