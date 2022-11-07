@@ -7,33 +7,47 @@
 
 import UIKit
 import RealmSwift
+import RxSwift
+import RxCocoa
 
 class InitialViewController: UIViewController {
     
     let realm = try! Realm()
+    let disposeBag = DisposeBag()
         
-    var data = [String]()
+    //var data = [String]()
+    var tableViewItems = Observable.just(["aaa","bbb","ccc"])
     
     lazy var tableView: UITableView = {
         let tb = UITableView(frame: .zero, style: .plain)
         tb.translatesAutoresizingMaskIntoConstraints = false
         tb.isScrollEnabled = true
-        tb.register(UITableViewCell.self, forCellReuseIdentifier: "myCell")
-        //tb.separatorStyle = .singleLineEtched
-        tb.delegate = self
-        tb.dataSource = self
+        tb.register(CustomTableViewCell.self, forCellReuseIdentifier: CustomTableViewCell.identifier)
+        //tb.delegate = self
+        //tb.dataSource = self
         return tb
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for x in 0...100 {
-            data.append("Some data \(x)")
-        }
+        
+//        for x in 0...100 {
+//            data.append("Some data \(x)")
+//        }
+        self.title = "Locations Recorded"
         self.view.addSubview(tableView)
-//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "myCell")
-//        tableView.delegate = self
-//        tableView.dataSource = self
+        
+        tableViewItems
+            .bind(to: tableView
+                .rx
+                .items(cellIdentifier: CustomTableViewCell.identifier, cellType: CustomTableViewCell.self)
+            ) {
+                    (tv, tableViewItem, cell) in
+                cell.lab
+                    cell.textLabel?.text = tableViewItem
+            }
+            .disposed(by: disposeBag)
+        
         
         //self.view.backgroundColor = .blue
         
@@ -87,6 +101,7 @@ class InitialViewController: UIViewController {
 
 }
 
+/*
 extension InitialViewController:UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -107,3 +122,4 @@ extension InitialViewController:UITableViewDataSource, UITableViewDelegate {
         print("cell \(indexPath.row)")
     }
 }
+*/
