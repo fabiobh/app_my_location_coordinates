@@ -11,14 +11,18 @@
 		8B2A655F291592D100A4FCF6 /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A655E291592D100A4FCF6 /* InitialViewController.swift */; };
 		8B2A6564291592D400A4FCF6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B2A6563291592D400A4FCF6 /* Assets.xcassets */; };
 		8B2A6567291592D400A4FCF6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B2A6565291592D400A4FCF6 /* LaunchScreen.storyboard */; };
-		8B2A6572291592D400A4FCF6 /* MyLocationCoordinatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B2A6571291592D400A4FCF6 /* MyLocationCoordinatesTests.swift */; };
 		8B797E1A2918343700F9943E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8B797E192918343700F9943E /* RxCocoa */; };
 		8B797E1C2918343700F9943E /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B797E1B2918343700F9943E /* RxSwift */; };
 		8B797E1F2918345C00F9943E /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 8B797E1E2918345C00F9943E /* RxCocoa */; };
 		8B797E212918504F00F9943E /* CustomTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B797E202918504F00F9943E /* CustomTableViewCell.swift */; };
+		8B9C1432291944990004FA92 /* CoordinateCellDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9C1431291944990004FA92 /* CoordinateCellDataModel.swift */; };
 		8B9C20752915A095000C1E4F /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B9C20742915A095000C1E4F /* RxSwift */; };
 		8B9C20782915B146000C1E4F /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8B9C20772915B146000C1E4F /* RealmSwift */; };
+		8BBA4971291AB9E500BCA256 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA4970291AB9E500BCA256 /* LocationViewController.swift */; };
+		8BBA4973291AE58100BCA256 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA4972291AE58100BCA256 /* Constants.swift */; };
+		8BBA4975291AE91200BCA256 /* LocationDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BBA4974291AE91200BCA256 /* LocationDetailViewController.swift */; };
 		8BD993392916D0190036E11D /* LocationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BD993382916D0190036E11D /* LocationData.swift */; };
+		8BDDC0F42919AD21001383FF /* ColorHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BDDC0F32919AD21001383FF /* ColorHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,10 +50,14 @@
 		8B2A6566291592D400A4FCF6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8B2A6568291592D400A4FCF6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8B2A656D291592D400A4FCF6 /* MyLocationCoordinatesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyLocationCoordinatesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8B2A6571291592D400A4FCF6 /* MyLocationCoordinatesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyLocationCoordinatesTests.swift; sourceTree = "<group>"; };
 		8B2A6577291592D500A4FCF6 /* MyLocationCoordinatesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyLocationCoordinatesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B797E202918504F00F9943E /* CustomTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTableViewCell.swift; sourceTree = "<group>"; };
+		8B9C1431291944990004FA92 /* CoordinateCellDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinateCellDataModel.swift; sourceTree = "<group>"; };
+		8BBA4970291AB9E500BCA256 /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		8BBA4972291AE58100BCA256 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		8BBA4974291AE91200BCA256 /* LocationDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailViewController.swift; sourceTree = "<group>"; };
 		8BD993382916D0190036E11D /* LocationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationData.swift; sourceTree = "<group>"; };
+		8BDDC0F32919AD21001383FF /* ColorHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +94,6 @@
 			isa = PBXGroup;
 			children = (
 				8B2A6559291592D100A4FCF6 /* MyLocationCoordinates */,
-				8B2A6570291592D400A4FCF6 /* MyLocationCoordinatesTests */,
 				8B2A6558291592D100A4FCF6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -106,21 +113,18 @@
 			children = (
 				8B2A655A291592D100A4FCF6 /* AppDelegate.swift */,
 				8B2A655E291592D100A4FCF6 /* InitialViewController.swift */,
+				8BBA4974291AE91200BCA256 /* LocationDetailViewController.swift */,
 				8B2A6563291592D400A4FCF6 /* Assets.xcassets */,
 				8B2A6565291592D400A4FCF6 /* LaunchScreen.storyboard */,
 				8B2A6568291592D400A4FCF6 /* Info.plist */,
 				8BD993382916D0190036E11D /* LocationData.swift */,
+				8B9C1431291944990004FA92 /* CoordinateCellDataModel.swift */,
 				8B797E202918504F00F9943E /* CustomTableViewCell.swift */,
+				8BDDC0F32919AD21001383FF /* ColorHelper.swift */,
+				8BBA4970291AB9E500BCA256 /* LocationViewController.swift */,
+				8BBA4972291AE58100BCA256 /* Constants.swift */,
 			);
 			path = MyLocationCoordinates;
-			sourceTree = "<group>";
-		};
-		8B2A6570291592D400A4FCF6 /* MyLocationCoordinatesTests */ = {
-			isa = PBXGroup;
-			children = (
-				8B2A6571291592D400A4FCF6 /* MyLocationCoordinatesTests.swift */,
-			);
-			path = MyLocationCoordinatesTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -222,7 +226,6 @@
 				8B9C20732915A095000C1E4F /* XCRemoteSwiftPackageReference "RxSwift" */,
 				8B9C20762915B146000C1E4F /* XCRemoteSwiftPackageReference "realm-swift" */,
 				8B797E182918343700F9943E /* XCRemoteSwiftPackageReference "RxSwift" */,
-				8B797E1D2918345C00F9943E /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = 8B2A6558291592D100A4FCF6 /* Products */;
 			projectDirPath = "";
@@ -266,10 +269,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BBA4971291AB9E500BCA256 /* LocationViewController.swift in Sources */,
 				8BD993392916D0190036E11D /* LocationData.swift in Sources */,
+				8BDDC0F42919AD21001383FF /* ColorHelper.swift in Sources */,
 				8B2A655F291592D100A4FCF6 /* InitialViewController.swift in Sources */,
+				8BBA4975291AE91200BCA256 /* LocationDetailViewController.swift in Sources */,
 				8B797E212918504F00F9943E /* CustomTableViewCell.swift in Sources */,
 				8B2A655B291592D100A4FCF6 /* AppDelegate.swift in Sources */,
+				8B9C1432291944990004FA92 /* CoordinateCellDataModel.swift in Sources */,
+				8BBA4973291AE58100BCA256 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,7 +285,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8B2A6572291592D400A4FCF6 /* MyLocationCoordinatesTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -601,14 +608,6 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 6.0.0;
-			};
-		};
-		8B797E1D2918345C00F9943E /* XCRemoteSwiftPackageReference "RxSwift" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/ReactiveX/RxSwift.git";
-			requirement = {
-				branch = main;
-				kind = branch;
 			};
 		};
 		8B9C20732915A095000C1E4F /* XCRemoteSwiftPackageReference "RxSwift" */ = {

@@ -10,6 +10,7 @@ import RealmSwift
 
 class LocationData: Object {
     
+    @objc dynamic var locationID = UUID().uuidString
     @objc dynamic var placeName: String = ""
     @objc dynamic var latitude: Int = 0
     @objc dynamic var longitude: Int = 0
@@ -19,5 +20,9 @@ class LocationData: Object {
         self.placeName = placeName
         self.latitude = latitude
         self.longitude = longitude
+    }
+        
+    override static func primaryKey() -> String? {
+      return "locationID"
     }
 }

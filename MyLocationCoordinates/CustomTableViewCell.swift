@@ -18,13 +18,14 @@ class CustomTableViewCell: UITableViewCell {
     
     let label1: UILabel = {
         let lb = UILabel()
+        lb.text = "--"
         return lb
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         contentView.backgroundColor = .orange
-        contentView.addSubview(_switch)
+        //contentView.addSubview(_switch)
         contentView.addSubview(label1)
     }
     
@@ -34,9 +35,16 @@ class CustomTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        /*
         _switch.frame = CGRect(x: 5,
                                y: 5,
                                width: 100,
                                height: contentView.frame.size.height - 10)
+        */
+        label1.frame = CGRect(x: 20,
+                               y: 5,
+                               width: 100,
+                               height: contentView.frame.size.height - 10)
+        
     }
 }

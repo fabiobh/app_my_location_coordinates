@@ -16,7 +16,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.makeKeyAndVisible()
         window?.backgroundColor = .white
-        window?.rootViewController = InitialViewController()
+        let firstVc = InitialViewController()
+        // window?.rootViewController = InitialViewController()
+        let rootVc = UINavigationController(rootViewController: firstVc)
+        //rootVc.modalPresentationStyle = .fullScreen
+        window?.rootViewController = rootVc
         
         return true
     }

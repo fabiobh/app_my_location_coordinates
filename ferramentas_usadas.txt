@@ -3,3 +3,8 @@ RxSwift
 TableView
 ViewCode
 Combine - talvez para fazer http requests
+
+- precisa adicionar um titulo(barra de navegação), preciso ver como adicionar uma NavigationController ao viewCode inicial da viewController
+- ajustar tableview para ir ate a parte da stackView preta com texto amarelo
+- ver como deletar registros 
+- ir para outra tela, navegar ao clicar em elemento da tableView
