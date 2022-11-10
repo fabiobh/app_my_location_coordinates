@@ -111,12 +111,12 @@
 		8B2A6559291592D100A4FCF6 /* MyLocationCoordinates */ = {
 			isa = PBXGroup;
 			children = (
+				8B2A6565291592D400A4FCF6 /* LaunchScreen.storyboard */,
+				8B2A6563291592D400A4FCF6 /* Assets.xcassets */,
+				8B2A6568291592D400A4FCF6 /* Info.plist */,
 				8B2A655A291592D100A4FCF6 /* AppDelegate.swift */,
 				8B2A655E291592D100A4FCF6 /* InitialViewController.swift */,
 				8BBA4974291AE91200BCA256 /* LocationDetailViewController.swift */,
-				8B2A6563291592D400A4FCF6 /* Assets.xcassets */,
-				8B2A6565291592D400A4FCF6 /* LaunchScreen.storyboard */,
-				8B2A6568291592D400A4FCF6 /* Info.plist */,
 				8BD993382916D0190036E11D /* LocationData.swift */,
 				8B9C1431291944990004FA92 /* CoordinateCellDataModel.swift */,
 				8B797E202918504F00F9943E /* CustomTableViewCell.swift */,

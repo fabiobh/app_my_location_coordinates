@@ -17,8 +17,7 @@ class InitialViewController: LocationViewController {
     
     var tableViewItems = BehaviorRelay.init(value:
         [
-            CoordinateCellDataModel(locationId: "", namePlace: "---", latitude: 1, longitude: 1),
-            //CoordinateCellDataModel(namePlace: "bbb", latitude: 2, longitude: 2),
+            CoordinateCellDataModel(locationId: "", namePlace: "---", latitude: 0, longitude: 0),
             //CoordinateCellDataModel(namePlace: "ccc", latitude: 3, longitude: 3)
         ]
     )
@@ -35,7 +34,8 @@ class InitialViewController: LocationViewController {
         let lb = UILabel()
         lb.translatesAutoresizingMaskIntoConstraints = false
         //let lb = UILabel(frame: CGRect(x: 100, y: 250, width: 100, height: 50))
-        lb.text = "Current Latitude:"
+        lb.text = "--Current Status--\nCurrent Latitude: \nCurrent Longitude: \nLocations saved: \n"
+        lb.numberOfLines = 0
         lb.textColor = UIColorConstant.yellowColor
         return lb
     }()
@@ -70,7 +70,7 @@ class InitialViewController: LocationViewController {
         //debug()
         configure()
         configRxComponents()
-        getRealmDataToTableView()
+        
     }
     
     func debug() {
@@ -91,9 +91,6 @@ class InitialViewController: LocationViewController {
         
         self.view.addSubview(currentLatitude)
         
-        
-        
-        
     }
     
     func configRxComponents() {
@@ -103,7 +100,7 @@ class InitialViewController: LocationViewController {
                 .items(cellIdentifier: CustomTableViewCell.identifier, cellType: CustomTableViewCell.self)
             ) {
                 (tv, tableViewItem, cell) in
-                cell.label1.text = "z: \(tableViewItem.namePlace) zzz"
+                cell.label1.text = "z: \(tableViewItem.locationId) zzz"
                 //cell.textLabel?.text = tableViewItem
             }
         .disposed(by: disposeBag)
@@ -114,9 +111,8 @@ class InitialViewController: LocationViewController {
                 coordinateObject in
                 print("x: \(coordinateObject.namePlace)")
                 let vc = LocationDetailViewController()
-                vc.latitudeString.accept(coordinateObject.namePlace)
                 vc.locationData.accept(
-                    CoordinateCellDataModel(locationId: coordinateObject.locationId, namePlace: coordinateObject.namePlace, latitude: 222, longitude: 333)
+                    CoordinateCellDataModel(locationId: coordinateObject.locationId, namePlace: coordinateObject.namePlace, latitude: coordinateObject.latitude, longitude: coordinateObject.longitude)
                 )
                 self.navigationController?.pushViewController(vc, animated: true)
             })
@@ -140,20 +136,14 @@ class InitialViewController: LocationViewController {
         detailsStackView.heightAnchor.constraint(equalToConstant: 150).isActive = true
         detailsStackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: 0).isActive = true
         
-        currentLatitude.widthAnchor.constraint(equalTo: view.widthAnchor, constant: -10).isActive = true
-        currentLatitude.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        currentLatitude.widthAnchor.constraint(equalTo: view.widthAnchor, constant: 0).isActive = true
+        currentLatitude.heightAnchor.constraint(equalToConstant: 150).isActive = true
         currentLatitude.topAnchor.constraint(equalTo: detailsStackView.topAnchor, constant: 0).isActive = true
         
     }
-    
-    func deleteDataRealm() {
-        realm.beginWrite()
-        realm.delete(realm.objects(LocationData.self))
-        try! realm.commitWrite()
-    }
-    
+        
     func saveRealmData() {
-        let myLocation = LocationData(placeName: UUID().uuidString, latitude: 1, longitude: 1)
+        let myLocation = LocationData(placeName: "My place \(UUID().uuidString)", latitude: 1, longitude: 1)
         realm.beginWrite()
         realm.add(myLocation)
         try! realm.commitWrite()
@@ -187,18 +177,13 @@ class InitialViewController: LocationViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
+        getRealmDataToTableView()
     }
-    
-    
-    
-    
     
     @objc func saveCoordinate() {
         print("save coordinate")
         saveDataAndUpdateScreen()
     }
-
 
 }
 

@@ -30,6 +30,15 @@ class LocationDetailViewController: UIViewController {
         return lb
     }()
     
+    var currentLongitude: UILabel = {
+        //let lb = UILabel()
+        //lb.translatesAutoresizingMaskIntoConstraints = false
+        let lb = UILabel(frame: CGRect(x: 50, y: 250, width: 200, height: 150))
+        lb.text = "Current Latitude:"
+        lb.textColor = UIColorConstant.yellowColor
+        return lb
+    }()
+    
     var buttonDeleteCoordinate: UIButton = {
         //let bt = UIButton(frame: CGRect(x: 100, y: 100, width: 100, height: 50))
         let bt = UIButton()
@@ -52,7 +61,7 @@ class LocationDetailViewController: UIViewController {
     
     let realm = try! Realm()
     let disposeBag = DisposeBag()
-    let latitudeString: BehaviorRelay = BehaviorRelay<String>(value: "")
+    //let latitudeString: BehaviorRelay = BehaviorRelay<String>(value: "")
     let locationData: BehaviorRelay = BehaviorRelay<CoordinateCellDataModel>(
         value: CoordinateCellDataModel(locationId: "", namePlace: "", latitude: 0, longitude: 0)
     )
@@ -63,25 +72,45 @@ class LocationDetailViewController: UIViewController {
         self.title = "Location Detail"
         self.view.addSubview(detailsStackView)
         self.view.addSubview(currentLatitude)
+        self.view.addSubview(currentLongitude)
         
         self.view.addSubview(buttonDeleteCoordinate)
         buttonDeleteCoordinate.addTarget(self, action: #selector(deleteCoordinateFunction), for: .touchUpInside)
         self.view.addSubview(showMapCoordinate)
         showMapCoordinate.addTarget(self, action: #selector(showMapCoordinateFunction), for: .touchUpInside)
-        
-                
-        latitudeString.bind(to: currentLatitude.rx.text)
-        .disposed(by: disposeBag)
+
+        configRxComponents()
                 
     }
     
+    func configRxComponents() {
+        locationData.map({
+            locationDataObject in
+            print("locationDataObject: \(locationDataObject)")
+            return locationDataObject.locationId
+        })
+            .bind(to: currentLatitude.rx.text)
+        .disposed(by: disposeBag)
+        
+        //latitudeString.bind(to: currentLatitude.rx.text)
+        //.disposed(by: disposeBag)
+    }
+    
+    func deleteDataRealm() {
+        realm.beginWrite()
+        realm.delete(realm.objects(LocationData.self))
+        try! realm.commitWrite()
+    }
+    
     func deleteRealmSpecificObjectById(_ locationId: String) {
+        //print("locationId: \(locationId)")
         try! realm.write {
             let location = realm.objects(LocationData.self).where {
                 $0.locationID == locationId
             }
             realm.delete(location)
         }
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -90,8 +119,16 @@ class LocationDetailViewController: UIViewController {
     }
     
     @objc func deleteCoordinateFunction() {
-        print("delete")
-        //deleteRealmSpecificObjectById("")
+        print("deleteCoordinateFunction")
+        
+        locationData.subscribe(onNext: {
+            locationDataObject in
+            print("name: \(locationDataObject.locationId)")
+            self.deleteRealmSpecificObjectById(locationDataObject.locationId)
+            self.navigationController?.popViewController(animated: true)
+        })
+        .disposed(by: disposeBag)
+                
     }
     
     @objc func showMapCoordinateFunction() {
