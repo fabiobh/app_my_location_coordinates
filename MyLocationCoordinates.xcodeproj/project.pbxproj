@@ -115,11 +115,11 @@
 		8B2A6559291592D100A4FCF6 /* MyLocationCoordinates */ = {
 			isa = PBXGroup;
 			children = (
+				8B898628291EA8030017AA05 /* Model */,
+				8B89862A291EA8380017AA05 /* View */,
 				8B84A89C2920690600EC87D5 /* ViewModel */,
 				8B89862B291EC5260017AA05 /* Database */,
-				8B89862A291EA8380017AA05 /* View */,
 				8B898629291EA8100017AA05 /* Util */,
-				8B898628291EA8030017AA05 /* Model */,
 				8B2A6565291592D400A4FCF6 /* LaunchScreen.storyboard */,
 				8B2A6563291592D400A4FCF6 /* Assets.xcassets */,
 				8B2A6568291592D400A4FCF6 /* Info.plist */,

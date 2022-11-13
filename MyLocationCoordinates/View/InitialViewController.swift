@@ -186,13 +186,6 @@ class InitialViewController: LocationViewController {
         
     }
     
-    func checkGpsIsActive() {
-        if myCurrentStatusValue.value == "" {
-            print("startLocation")
-            getLocation()
-            //buttonSaveCoordinate.setTitle("Save Coordinate", for: .normal)
-        }
-    }
     
     @objc func saveCoordinate() {
         
@@ -200,11 +193,11 @@ class InitialViewController: LocationViewController {
         if myCurrentStatusValue.value == "" {
             print("startLocation")
             getLocation()
-            buttonSaveCoordinate.setTitle("Save Coordinate", for: .normal)
         } else {
             print("save coordinate")
             saveDataAndUpdateScreen()
         }
+        buttonSaveCoordinate.setTitle("Save Coordinate", for: .normal)
         
     }
 

@@ -3,6 +3,7 @@ RxSwift
 TableView
 ViewCode
 Combine - talvez para fazer http requests
+MVVM
 
 - consertar botao de save coordinate para começar a fazer o rastreamento
 
