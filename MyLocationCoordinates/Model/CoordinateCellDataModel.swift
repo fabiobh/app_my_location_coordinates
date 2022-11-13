@@ -10,6 +10,6 @@ import Foundation
 struct CoordinateCellDataModel {
     let locationId: String
     let namePlace: String
-    let latitude: Int
-    let longitude: Int
+    let latitude: Double
+    let longitude: Double
 }

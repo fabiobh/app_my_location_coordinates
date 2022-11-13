@@ -9,7 +9,8 @@
 import Foundation
 import CoreLocation
 import UIKit
-
+import RxSwift
+import RxCocoa
 /*
  use a LocationViewController ao herdar uma UIViewController para mostrar a tela de solicitação de permissão
  de uso do Sensor GPS e também para capturar as coordenadas e salvar no UserDefaults
@@ -18,17 +19,22 @@ import UIKit
 class LocationViewController: UIViewController, CLLocationManagerDelegate {
     
     let locationManager = CLLocationManager()
+    let myCurrentStatusValue: BehaviorRelay = BehaviorRelay<String>(value: "")
+    let myCurrentLatitude: BehaviorRelay = BehaviorRelay<Double>(value: (0.0))
+    let myCurrentLongitude: BehaviorRelay = BehaviorRelay<Double>(value: (0.0))
     
     override func viewDidLoad() {
         super.viewDidLoad()
         print("___ LocationViewController viewDidLoad")
-        getLocation()
+        //getLocation()
     }
     
     func getLocation() {
         print("___ LocationViewController getLocation")
         // 1
-        let status = CLLocationManager.authorizationStatus()
+//        let locationManager = CLLocationManager()
+//        let status = locationManager.authorizationStatus
+        let status = CLLocationManager().authorizationStatus
         
         switch status {
             case .notDetermined:
@@ -36,7 +42,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
                     return
                 
             case .denied, .restricted:
-                let alert = UIAlertController(title: "Serviçoõs de localização desativados", message: "Por favor, ative os Serviços de Localização nas Configurações do seu dispositivo", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Location services are deactivated", message: "Please, enable Location Services on the device configuration", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(okAction)
                 
@@ -52,6 +58,7 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         locationManager.startUpdatingLocation() // função didUpdateLocations controla quando GPS capta atualização do Sensor
         //locationManager.startMonitoringSignificantLocationChanges()
+        
     }
     
     
@@ -72,7 +79,14 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate {
     fileprivate func showLocationPosition(_ currentLocation: CLLocation) {
         print("currentLocation: \(currentLocation)")
         print("latitude: \(currentLocation.coordinate.latitude)")
+        myCurrentStatusValue.accept("""
+          Current Latitude: \(currentLocation.coordinate.latitude)
+          Current Longitude: \(currentLocation.coordinate.longitude)
+        """)
+        myCurrentLatitude.accept(currentLocation.coordinate.latitude)
+        myCurrentLongitude.accept(currentLocation.coordinate.longitude)
         print("horizontalAccuracy: \(currentLocation.horizontalAccuracy.magnitude)")
+        print("currentLatitude: \(myCurrentStatusValue.value)")
         //UserDefaults.standard.set(currentLocation.coordinate.latitude, forKey: RESconstantes.LATITUDE_USER)
         //UserDefaults.standard.set(currentLocation.coordinate.longitude, forKey: RESconstantes.LONGITUDE_USER)
     }

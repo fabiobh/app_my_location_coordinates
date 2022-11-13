@@ -12,10 +12,10 @@ class LocationData: Object {
     
     @objc dynamic var locationID = UUID().uuidString
     @objc dynamic var placeName: String = ""
-    @objc dynamic var latitude: Int = 0
-    @objc dynamic var longitude: Int = 0
+    @objc dynamic var latitude: Double = 0.0
+    @objc dynamic var longitude: Double = 0.0
     
-    convenience init(placeName: String, latitude: Int, longitude: Int) {
+    convenience init(placeName: String, latitude: Double, longitude: Double) {
         self.init()
         self.placeName = placeName
         self.latitude = latitude
