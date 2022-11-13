@@ -2,9 +2,7 @@
 
 This app use the following technologies:
 
-Realm
+MVVM
 RxSwift
-TableView with ViewCode - No Soryboard
-
-Maybe
-Combine - create http requests
+Realm
+ViewCode - No Soryboard
